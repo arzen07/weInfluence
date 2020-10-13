@@ -1,4 +1,4 @@
-import fb from "../firebase";
+import firebase from "../firebase"
 import React, { useEffect, useState } from "react";
 
 // makes value global to whole app
@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
 
     useEffect(() => {
-        fb.auth().onAuthStateChanged(setCurrentUser);
+        firebase.auth().onAuthStateChanged(setCurrentUser);
 
     }, []);
     return (

@@ -6,14 +6,14 @@ import Nav from './components/Navbar';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { HOME, SIGN_IN, SIGN_UP } from './core/constants';
-import fire from './core/firebase';
+import firebase from "./core/firebase"
 import { AuthProvider } from './core/services/Auth';
 import PrivateRoute from './core/services/Route';
 const Home = () => {
   return (
     <div>
       <h1>We Influence!!!</h1>
-      <button onClick={() => fire.auth.auth().signOut()}>Log out</button>
+      <button onClick={() => firebase.auth().signOut()}>Log out</button>
     </div>
   )
 }
