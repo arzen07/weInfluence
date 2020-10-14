@@ -6,24 +6,24 @@ import { Form } from "react-bootstrap";
 import { withRouter, Redirect } from "react-router";
 import firebase from "../../core/firebase"
 import { AuthContext } from '../../core/services/Auth';
-import  { ErrorBanner } from '../../core/shared'
+import { ErrorBanner } from '../../core/shared'
 
 
 const useStyles = makeStyles({
-  container:{
-    boxShadow:' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
-    borderRadius:8,
+  container: {
+    boxShadow: ' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)',
+    borderRadius: 8,
     marginTop: 15,
   },
   padding: {
     padding: 12,
   },
- 
+
   labelErrorColor: {
-    color:'red'
+    color: 'red'
   },
   labelColor: {
-    color:'black'
+    color: 'black'
   }
 })
 
@@ -45,7 +45,7 @@ const SignIn = ({ history }) => {
     passwordMessage: ""
   });
 
-  const [loginError,setLoginError]=useState(false);
+  const [loginError, setLoginError] = useState(false);
 
   const classes = useStyles();
 
@@ -54,38 +54,11 @@ const SignIn = ({ history }) => {
     return <Redirect to="/" />;
   }
 
-  const handleClose=()=> {
+  const handleClose = () => {
     setLoginError(false);
   }
 
 
-  // const [user, setUser] = useState('');
-
-  // const [emailError, setEmailError] = useState('');
-  // const [passwordError, setPasswordError] = useState('');
-
-  // const handleLogin = (event) => {
-  //   event.preventDefault();
-  //   fire
-  //     .auth()
-  //     .signInWithEmailAndPassword(email, password)
-  //     .then((val)=> {
-  //       history.push('/');
-  //     })
-  //     .catch(err => {
-  //       switch (err.code) {
-  //         case "auth/invalid-email":
-  //         case "auth/user-disabled":
-  //         case "auth/user-not-found":
-  //           setEmailError(err.message);
-  //           break;
-  //         case "auth/wrong-password":
-  //           setPasswordError(err.message);
-  //           break;
-
-  //       }
-  //     });
-  // };
 
   // here event.target.element uses text field name to identify the object name like : name="email" so it maps with object name "email"
   // const handleLogin = useCallback(
@@ -113,118 +86,143 @@ const SignIn = ({ history }) => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    
-  
-    if(validateForm()){
-       // alert("valid");
-    }else {
-      setLoginError(true)
+
+
+    if (validateForm()) {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(fields.email, fields.password)
+        .then((val) => {
+          history.push('/');
+        })
+        .catch(err => {
+         
+          switch (err.code) {
+            case "auth/invalid-email":
+              setLoginError(true);
+              break;
+            case "auth/user-disabled":
+              setLoginError(true);
+              break;
+            case "auth/user-not-found":
+              setLoginError(true);
+              break;
+            case "auth/wrong-password":
+              setLoginError(true);
+              break;
+            default:
+              setLoginError(true);
+              break;
+          }
+        });
+    } else {
+     // setLoginError(true);
     }
 
   }
 
 
   const validateForm = () => {
-    let isValid=true;
-    
-    if(typeof fields.email!== "undefined"){
-    
+    let isValid = true;
+
+    if (typeof fields.email !== "undefined") {
+
       var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
-      if(!pattern.test(fields.email)){
-      
-        setEmailError({...emailError,emailError:true,emailMessage:"Please enter valid email address"});
-        isValid=false;
-      //  console.log(error,"asd");
-     
-       
-      }else {
-        setEmailError({...emailError,emailError:false,emailMessage:""});
-        isValid=true;
-        
+      if (!pattern.test(fields.email)) {
+
+        setEmailError({ ...emailError, emailError: true, emailMessage: "Please enter valid email address" });
+        isValid = false;
+        //  console.log(error,"asd");
+
+
+      } else {
+        setEmailError({ ...emailError, emailError: false, emailMessage: "" });
+        isValid = true;
+
       }
-    }else {
-     console.log("undifiend");
-     setEmailError({...emailError,emailError:true,emailMessage:"Please enter email address"});
-      isValid=false;
-        
+    } else {
+      console.log("undifiend");
+      setEmailError({ ...emailError, emailError: true, emailMessage: "Please enter email address" });
+      isValid = false;
+
     }
-    
-    if(fields.password.length>6){
-        
-      setPasswordError({...passwordError,passwordError:false,passwordMessage:""});
-    }else {
-      isValid=false;
-      
-       setPasswordError({...passwordError,passwordError:true,passwordMessage:"Please enter strong password"});
+
+    if (fields.password.length > 6) {
+
+      setPasswordError({ ...passwordError, passwordError: false, passwordMessage: "" });
+    } else {
+      isValid = false;
+
+      setPasswordError({ ...passwordError, passwordError: true, passwordMessage: "Please enter valid password" });
       // console.log(error,2);
     }
     return isValid;
   }
   return (
-    <Container  maxWidth="sm" className={clsx(classes.padding, classes.container)} >
-      
-        <h1>Log in</h1>
+    <Container maxWidth="sm" className={clsx(classes.padding, classes.container)} >
 
-        <Form onSubmit={handleLogin} noValidate>
-          <FormGroup>
-            <TextField
-              id="outlined-email"
-              label="Email"
-              margin="dense"
-              variant="outlined"
-              name="email"
-              type="email"
-              error={emailError.emailError}
-              helperText={emailError.emailMessage}
-              required
-               style={{color:"red"}}
-               
-              value={fields.email}
-              onChange={(e) => {
-             
-                setFields({ ...fields, email: e.target.value })
+      <h1>Log in</h1>
+
+      <Form onSubmit={handleLogin} noValidate>
+        <FormGroup>
+          <TextField
+            id="outlined-email"
+            label="Email"
+            margin="dense"
+            variant="outlined"
+            name="email"
+            type="email"
+            error={emailError.emailError}
+            helperText={emailError.emailMessage}
+            required
+            style={{ color: "red" }}
+
+            value={fields.email}
+            onChange={(e) => {
+
+              setFields({ ...fields, email: e.target.value })
+            }}
+          />
+        </FormGroup>
+        <FormGroup>
+          <FormControl variant="outlined" margin='dense' required    >
+            <InputLabel className={(emailError.emailError) ? classes.labelErrorColor : classes.labelColor} color={(emailError.emailError) ? "secondary" : "primary"} htmlFor="outlined-adornment-password">Password</InputLabel>
+            <OutlinedInput
+              label="Password"
+              name="password"
+              error={passwordError.passwordError}
+
+
+              value={fields.password}
+              onChange={e => {
+
+                setFields({ ...fields, password: e.target.value })
               }}
+              type={fields.showPassword ? "text" : "password"}
+              id="outlined-password"
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    onClick={handleClickShowPassword}
+                    onMouseDown={handleMouseDownPassword}
+                  >
+                    {fields.showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
             />
-          </FormGroup>
-          <FormGroup>
-            <FormControl variant="outlined" margin='dense' required    >
-              <InputLabel   className={(emailError.emailError)?classes.labelErrorColor:classes.labelColor} color={(emailError.emailError)?"secondary":"primary"} htmlFor="outlined-adornment-password">Password</InputLabel>
-              <OutlinedInput
-                label="Password"
-                name="password"
-                error={passwordError.passwordError}
-                
-              
-                value={fields.password}
-                onChange={e => {
+            {passwordError.passwordError && <FormHelperText style={{ color: "red" }}>{passwordError.passwordMessage}</FormHelperText>}
 
-                  setFields({ ...fields, password: e.target.value })
-                }}
-                type={fields.showPassword ? "text" : "password"}
-                id="outlined-password"
-                endAdornment={
-                  <InputAdornment position="end">
-                    <IconButton
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                    >
-                      {fields.showPassword ? <Visibility /> : <VisibilityOff />}
-                    </IconButton>
-                  </InputAdornment>
-                }
-              />
-              {passwordError.passwordError && <FormHelperText style={{ color: "red" }}>{passwordError.passwordMessage}</FormHelperText>}
-
-            </FormControl>
-          </FormGroup>
+          </FormControl>
+        </FormGroup>
 
 
 
 
-          <Button variant="contained" margin="dense" color="primary" type="submit" size="medium">Log in</Button>
-        </Form>
-       {/* <ErrorBanner /> */}
-       {loginError && ErrorBanner("error", "invalid",handleClose,loginError)}
+        <Button variant="contained" margin="dense" color="primary" type="submit" size="medium">Log in</Button>
+      </Form>
+      {/* <ErrorBanner /> */}
+      {loginError && ErrorBanner("error", "PLease check entered email and password", handleClose, loginError)}
     </Container>
   );
 }
