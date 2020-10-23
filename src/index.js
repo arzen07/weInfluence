@@ -2,9 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-ReactDOM.render(
+
+import {BrowserRouter as Router , Route} from 'react-router-dom'
+import Plans from './components/pages/Plans';
+import Footer from './components/pages/Footer';
+import Navbar from './components/Navbar';
+import Home from './components/pages/Home';
+
+
+
+
+ ReactDOM.render(
+ 
   
-    <App />
+   <div>
+   
+   <App/>
+    <Plans />
+    <Footer/>
+    </div>
+
+
+
+  
   ,
   document.getElementById('root')
 );

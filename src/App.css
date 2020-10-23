@@ -1,6 +1,184 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ovo&display=swap');
+
 *{
   box-sizing: border-box;
   margin: 0;
   padding:0;
-  font-family: 'PT sans', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  
 }
+
+#home{
+  
+}
+.navbar{
+  background-color:#0bd3d3 ;
+  
+  
+}
+
+.navbar-link-active{
+  text-decoration: #3b32eb solid line-through;
+  
+}
+.nav-link{
+  font-size: 3 rem;
+ margin-left: 14px;
+ font-weight: 500;
+ color:#000000;
+ font-family: 'Ovo', serif;
+
+}
+
+.navbar a:hover{
+
+ color:rgba(59, 50, 235, 1);
+  text-emphasis: bold;
+  
+
+
+}
+.menu_active{
+  font-weight: 900;
+  text-decoration: rgba(59, 50, 235, 1) ;
+
+
+  
+}
+
+@media(max-width:991ppx){
+  .navbar-brand{
+    font-size: 1.5rem;
+  }
+  .menu_active{
+    font-weight: bold;
+    border-bottom: rgba(59, 50, 235, 1);
+  }
+}
+
+
+.header-img{
+  margin-left: 0px;
+}
+
+
+#header{
+  width: 100%;
+  height: 80vh;
+  margin-top:70px;
+}
+
+#header h1{
+  margin: 0 0 10px 0;font-size: 45px;
+  font-weight: 700;
+  color: black;
+
+}
+#header h2{
+  margin: 0 0 10px 0;font-size: 24px;
+  color: rgb(48, 46, 46);
+
+}
+#header .brand-name{
+
+  color: #f890e7;
+  font-size: 5rem;;
+}
+.btn-join-us{
+  border: 2px solid #3b32eb;
+  background-color:white;
+color:#3b32eb;
+  margin-left: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#header .btn-join-us:hover{
+  background-color:#3b32eb;
+  color: #ffffff;
+  
+}
+.animated{
+  animation: up-down 2s ease-in-out infinite  alternate-reverse  both;
+
+}
+
+@-webkit-keyframes up-down{
+  0%{
+    transform: translatey(7px);
+  }
+  100%{
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes up-down{
+  0%{
+    transform: translatey(7px);
+  }
+  100%{
+    transform: translateY(-7px);
+  }
+}
+
+
+.logo{
+  width:25%;
+  height:20%;
+}
+
+.card-image{
+  height:22rem;
+  width:100%;
+  padding-bottom: 5px;
+  
+}
+
+
+
+#plans{
+  margin-top: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#plans_whole{
+  background-color: rgba(59, 50, 235, 0.1);
+}
+
+.card-title{
+  font-size: 2rem;
+  font-weight: 900;
+  font-variant: small-caps;
+
+  text-shadow: 1px 1px 2px #000000;}
+
+.price{
+font-size: 5rem;
+position:relative;
+
+}
+
+
+
+ul{
+  list-style-type:circle;
+  font-size: 1.1rem;
+  
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: bold;
+  
+}
+.hire399{
+  background-color: #ff8000;
+  color:white;
+
+}
+.navbar-active{
+  background-color:#6660e0 ;
+  
+}
+
