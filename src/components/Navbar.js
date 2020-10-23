@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SIGN_IN, SIGN_UP } from '../core/constants';
-import './Navbar.css';
+import './navbar.css';
 const Nav = () => {
     const navStyle={
         color:'white'
