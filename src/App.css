@@ -2,18 +2,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ovo&display=swap');
 
 *{
   box-sizing: border-box;
   margin: 0;
   padding:0;
   font-family: 'Nunito', sans-serif;
-
+  
 }
 
+#home{
+  
+}
 .navbar{
-  background-color:transparent;
-  margin-right: 20px;
+  background-color:#0bd3d3 ;
+  
+  
 }
 
 .navbar-link-active{
@@ -21,10 +26,11 @@
   
 }
 .nav-link{
-  font-size: 3rem;
+  font-size: 3 rem;
  margin-left: 14px;
- font-weight: 800;
- color:rgb(8, 1, 22);
+ font-weight: 500;
+ color:#000000;
+ font-family: 'Ovo', serif;
 
 }
 
@@ -50,20 +56,9 @@
   }
   .menu_active{
     font-weight: bold;
-    border-bottom: rgba(59, 50, 235, 0.5);
+    border-bottom: rgba(59, 50, 235, 1);
   }
 }
-
-  
-.navbar-brand {
- 
-}
-  
-  
-  
-
-
-
 
 
 .header-img{
@@ -90,7 +85,7 @@
 }
 #header .brand-name{
 
-  color: #3b32eb;
+  color: #f890e7;
   font-size: 5rem;;
 }
 .btn-join-us{
@@ -151,7 +146,7 @@ color:#3b32eb;
   justify-content: center;
 }
 #plans_whole{
-  background-color:white ;
+  background-color: rgba(59, 50, 235, 0.1);
 }
 
 .card-title{
@@ -167,11 +162,6 @@ position:relative;
 
 }
 
-.card{
-
-
-
-}
 
 
 ul{
@@ -188,7 +178,7 @@ ul{
 
 }
 .navbar-active{
-  background-color: #8b86e9;
+  background-color:#6660e0 ;
   
 }
 

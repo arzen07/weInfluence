@@ -7,7 +7,7 @@ import Navbar from '../Navbar'
 function Home() {
     return (
         <>
-        <div id='home'>
+        <div class='' id='home'>
             
         <Hero {...homeobj}/>
         </div>

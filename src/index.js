@@ -9,13 +9,16 @@ import Home from './components/pages/Home';
 
 
 
+
  ReactDOM.render(
+ 
   
-  <Router>
-   <Navbar/>
-   <Home/>
-    <Plans/>
-  </Router>
+   <div>
+   
+   <App/>
+    <Plans />
+    <Footer/>
+    </div>
   
   ,
   document.getElementById('root')

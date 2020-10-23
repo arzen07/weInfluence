@@ -8,13 +8,15 @@
     "@testing-library/user-event": "^7.2.1",
     "aos": "^2.3.4",
     "bootstrap": "^5.0.0-alpha1",
+    "mdbreact": "^4.27.0",
     "popper.js": "^1.16.1",
     "react": "^16.13.1",
     "react-card-flip": "^1.0.11",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-scroll": "^1.8.1"
+    "react-scroll": "^1.8.1",
+    "scroll-into-view-if-needed": "^2.2.26"
   },
   "scripts": {
     "start": "react-scripts start",

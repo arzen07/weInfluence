@@ -17,7 +17,7 @@ const myStyle2={
 }
 export const homeobj={
     Brand_slogan: 'become a succesful influencer with ',
-    Brand_name:'we influence',
+    Brand_name:'we 1nfluence',
     description:'we will grow your social media, develop your website and more',
     image:social_media,
     imgStart:''
