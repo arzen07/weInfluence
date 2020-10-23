@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import * as serviceWorker from './serviceWorker';
+
 import {BrowserRouter as Router , Route} from 'react-router-dom'
 import Plans from './components/pages/Plans';
 import Footer from './components/pages/Footer';
@@ -19,9 +21,12 @@ import Home from './components/pages/Home';
     <Plans />
     <Footer/>
     </div>
+
+
+
   
   ,
   document.getElementById('root')
 );
-
+serviceWorker.unregister();
 
